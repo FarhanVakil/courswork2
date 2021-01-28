@@ -38,6 +38,17 @@ app.post('/collection/:collection', (req, res, next) => {
         });
 });
 
+app.put('/collection/:collection/:id', (req, res, next) => {
+        req.collection.updateOne(
+                { _id: new ObjectId(req.params.id) },
+                { $set: req.body },
+                { safe: true, multi: false },
+                (e, result) => {
+                    if(e || result.result.n !== 1) return next();
+                    res.send({ message: 'success' });
+                });
+});
+
 app.use((req, res) => {
         res.status(404).send({
                 message: 'Error'
