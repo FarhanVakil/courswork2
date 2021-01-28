@@ -22,7 +22,7 @@ MongoClient.connect('mongodb+srv://farhan:sophia1@cluster0.bczhm.mongodb.net/', 
 
 app.param('collection', (req, res, next, collection) => {
         req.collection = db.collection(collection)
-        return next();
+                 return next();
 });
 
 app.get('/collection/:collection', (req, res, next) => {
