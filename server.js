@@ -32,7 +32,6 @@ app.get('/collection/:collection', (req, res, next) => {
         });
 });
 
-
 app.post('/collection/:collection', (req, res, next) => {
         req.collection.insert(req.body, (e, results) => {
                 if (e) return next();
